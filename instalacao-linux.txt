@@ -1,0 +1,67 @@
+# Atualização da lista de pacotes
+sudo apt update
+
+# Instalação do Apache
+sudo apt install apache2
+
+# Instalação de Ferramentas necessárias posteriormente
+sudo apt install curl git unzip
+
+# Imstalação das principais bibliotecas PHP utilizadas pelo Laravel
+sudo apt install php7.2 libapache2-mod-php7.2 php7.2-mbstring php7.2-xmlrpc  php7.2-soap php7.2-gd php7.2-xml php7.2-cli php7.2-zip
+
+# Instalação do MySql e do driver de acesso PHP
+sudo apt install mysql-server-5.7 php-mysql php7.2-mysql mysql-client-core-5.7
+
+# Configuração de senha do mysql
+sudo mysql_secure_installation
+
+# Execute o mysql-cli para criar um novo usuário
+sudo mysql
+  GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost' IDENTIFIED BY 'user';
+
+# Utilize o novo usuário para criar e remover databases
+mysql -u user -p
+create database databaseteste;
+drop database databaseteste;
+show databases;
+
+# Logar como root
+sudo -i
+cd
+
+# Como root, baixar e executar o instalador do composer
+curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Sair do usuário root e voltar ao usuário normal
+exit
+
+# Instalar pacote global de criação de projetos Laravel
+composer global require laravel/installer
+
+# Adicionar o path do pacote anterior à variável de ambiente PATH
+gedit ~/.bashrc
+export PATH=${PATH}:$HOME/.config/composer/vendor/bin
+
+# Testando a instalação
+# Criando uma pasta em seu home para os projetos
+cd ~
+mkdir projetos
+cd projetos
+# Criando o projeto laravel chamado teste
+laravel new teste
+# Executando e testando
+cd teste
+php artisan serve
+# Abra seu navegador no endereço http://localhost:8000
+
+
+# Instalação do Nodejs
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install nodejs
+
+
+
+
+
+

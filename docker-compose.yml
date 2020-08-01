@@ -4,8 +4,8 @@ volumes:
   data:
 services:
 
-  webserver:
-    container_name: curso-laravel-5-8
+  application:
+    container_name: php_laravel
     build:
       context: ./
       dockerfile: Dockerfile
@@ -18,14 +18,14 @@ services:
     ports:
       - 8014:80
     links:
-      - mysql
+      - mysqldb
     volumes:
       - type: bind
         source: ./
         target: /var/www/html
 
-  mysql:
-    container_name: curso-laravel-5-8-database
+  mysqldb:
+    container_name: database_php_laravel
     image: mysql:8.0.20
     command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
@@ -38,8 +38,8 @@ services:
     volumes:
       - data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: WSXsdf1*
-      MYSQL_DATABASE: curso-laravel-5-8
+      MYSQL_ROOT_PASSWORD: QAZasd1
+      MYSQL_DATABASE: laravel_produtos
 
 networks:
   rede:

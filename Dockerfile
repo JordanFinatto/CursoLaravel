@@ -34,3 +34,5 @@ COPY docker/conf/apache/000-default.conf /etc/apache2/sites-available/000-defaul
 #curl -sSL https://deb.nodesource.com/setup_12.x | bash -
 #apt-get install -y nodejs
 #npm install
+
+#sudo docker-compose -f docker-compose.yml up -d --build
